@@ -17,5 +17,5 @@ export const Loader = styled.div`
   background-size: cover;
   width: 200px;
   height: 200px;
-  /* animation: ${spin} 2s linear infinite; */
+  animation: ${spin} 2s linear infinite;
 `;

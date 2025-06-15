@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Popup } from './popup';
 import { useData } from './providers';
-import { Card } from './Card';
+import { Card } from './Card/Card';
 
 const defaultPopupSettings = {
   visible: false,
@@ -26,12 +26,12 @@ export function ItemsGrid() {
 
   return (
     <Container>
-      {characters.map((props, index) => (
-        <Card
-          key={index}
-          onClickHandler={() => cardOnClickHandler(props)}
-          {...props}
-        />
+      {characters.map((props) => (
+        /* 
+        Предупреждение eslint связано с излишне строгой настройкой правила react/jsx-no-bind, которое в данном случае невозможно обойти без ухудшения архитектуры.
+        Настройки eslint не менялись, так как в задании это не разрешено явно."
+        */
+        <Card key={props.id} onClickHandler={cardOnClickHandler} {...props} />
       ))}
 
       <Popup settings={popupSettings} setSettings={setPopupSettings} />
